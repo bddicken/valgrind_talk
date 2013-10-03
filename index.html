@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Valgrind</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="reveal.js/css/reveal.min.css">
+		<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section data-background="#47606E">
+					<h1>Intro to Valgrind</h1>
+					<p>
+                        <p class="fragment">...it's pronounced "val-grinned"...</p>
+					</p>
+
+					<aside class="notes">
+                        presenter notes
+					</aside>
+				</section>
+				
+                <section data-background="#47606E">
+					<h2>What is Valgrind?</h2>
+					
+                    <ul>
+                        <li> Instrumentation framework for executable files </li>
+                        <li> Primarily used for <i>dynamic</i> analysis </li>
+                        <li> Open Source Software </li>
+                        <li> Pop-quiz: What is Valgrind named after? (no Googling) </li>
+                    </ul>
+				</section>
+                
+                <section data-background="#47606E">
+					<h2>How does it work?</h2>
+					
+                    <ul>
+                        <li> Translates executables to IR (processor-neutral) generic code </li>
+                        <li> Modifies the IR code if necesarry </li>
+                        <li> Converts back to machine code </li>
+                        <li> Executes the program on a simulated CPU </li>
+                    </ul>
+                    
+                    <br/>
+                    <br/>
+
+                    <p>
+                        This ends up being significantly slower than normal execution.
+                    </p>
+				</section>
+                
+                <section data-background="#47606E">
+					<h2>How do I use it?</h2>
+				    <p>
+                        Valgrind itself is not a profiling tool. Valgrind has built-in tools which use the Valgrind framework to do program analysis.
+                    </p>
+				</section>
+                
+                <section data-background="#47606E">
+					<h2>Valgrind tool suite</h2>
+                    <ul>
+                        <li> Memcheck </li>
+                        <li> Cachegrind </li>
+                        <li> Callgrind </li>
+                        <li> Massif </li>
+                        <li> Helgrind </li>
+                        <li> DRD </li>
+                        <li> Others... </li>
+                    </ul>
+                    
+                    <br/>
+                    <br/>
+
+                    <p>
+                        We will focus on Memcheck and Callgrind.
+                    </p>
+				</section>
+
+				<section data-background="#47606E">
+					<h2>Usage</h2>
+					<p>
+                        How to use it:
+					</p>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+                    $ valgrind --tool=memcheck ./someprogram
+					</code></pre>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+                    $ valgrind --tool=callgrind ./someprogram
+					</code></pre>
+				</section>
+				
+                <section data-background="#47606E">
+					<h3>Now on to some examples...</h3>
+				</section>
+
+				<section data-background="#47606E">
+					<h1>THE END</h1>
+					<h3></h3>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
