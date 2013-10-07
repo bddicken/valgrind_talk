@@ -1,5 +1,5 @@
 #
-# Created programs that have clique call-graphs
+# Creates programs that have clique call-graphs
 #
 
 VERTICES=$1
